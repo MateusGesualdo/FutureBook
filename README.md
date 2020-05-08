@@ -4,7 +4,7 @@
 
 | Method | Path | Headers | Body | Response |
 | ------ | ---- | ------- | ---- | -------- |
-|  GET   | http:localhost:3000/users/signup| {"Content-Type":"application/json"} |      |          |
+| POST | /users/signup | not required | none |          |
 | POST | /users/login |
 | PUT | /users/friends/:friendId |
 | DELETE | /users/friends/:friendId | 
