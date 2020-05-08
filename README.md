@@ -2,6 +2,6 @@
 
 ## Endpoints
 
-| Method |      URL     |               Headers               | Body | Response |
-| ------ | ------------ | ----------------------------------- | ---- | -------- |
-|  GET   | /users/signup| {"Content-Type":"application/json"} |      |          |
+| Method |    Path                         |               Headers               | Body | Response |
+| ------ | ------------------------------- | ----------------------------------- | ---- | -------- |
+|  GET   | http:localhost:3000/users/signup| {"Content-Type":"application/json"} |      |          |
