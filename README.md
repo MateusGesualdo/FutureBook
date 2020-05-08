@@ -1,7 +1,14 @@
 # FutureBook
 
 ## Creating tables
-
+```SQL
+create table future_book_users (
+    id varchar(255) primary key,
+    name varchar(255) unique not null,
+    email varchar(255) unique not null,
+    password varchar(255) unique    
+);
+```
 ```SQL
 create table future_book_friends (
     user_id varchar(255),
@@ -11,12 +18,14 @@ create table future_book_friends (
     foreign key(friend_id) references future_book_users(id)
 );
 ```
-```
-create table future_book_users (
+```SQL
+create table future_book_posts (
     id varchar(255) primary key,
-    name varchar(255) unique not null,
-    email varchar(255) unique not null,
-    password varchar(255) unique    
+    author_id varchar(255),
+    description varchar(255),
+    creation_date datetime,
+    type varchar(255),
+    img varchar(255)
 );
 ```
 
