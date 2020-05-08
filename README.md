@@ -38,7 +38,7 @@ CREATE TABLE future_book_posts (
 | POST | /users/login | not required | `email`, `password` | `message`, `token?`, `user_public_info?` |
 | PUT | /users/friends/:friendId | `auth` | not required | `message` |
 | DELETE | /users/friends/:friendId | `auth` | not required | `message` |
-| POST | /posts |
+| POST | /posts | `auth` | `type`, `description`, `img` | `message` |
 | GET | /posts/feed |
 | GET | /posts/feed/:type |
 | PUT | /posts/likes/:postId |
