@@ -5,7 +5,7 @@
 | Method | Path | Headers | Body | Response |
 | ------ | ---- | ------- | ---- | -------- |
 | POST | /users/signup | not required | `name`, `email`, `password` | `message`, `token?` |
-| POST | /users/login | not required |
+| POST | /users/login | not required | `email`, `password` | `message`, `token?` |
 | PUT | /users/friends/:friendId |
 | DELETE | /users/friends/:friendId | 
 | POST | /posts |
