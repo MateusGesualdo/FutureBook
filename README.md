@@ -1,6 +1,6 @@
 # FutureBook
 
-## Creating tables
+## SQL Database Setup
 ```SQL
 CREATE TABLE future_book_users (
     id VARCHAR(255) PRIMARY KEY,
