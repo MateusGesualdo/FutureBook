@@ -2,30 +2,31 @@
 
 ## Creating tables
 ```SQL
-create table future_book_users (
-    id varchar(255) primary key,
-    name varchar(255) unique not null,
-    email varchar(255) unique not null,
-    password varchar(255) unique    
+CREATE TABLE future_book_users (
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) UNIQUE
 );
 ```
 ```SQL
-create table future_book_friends (
-    user_id varchar(255),
-    friend_id varchar(255),
-    primary key(user_id, friend_id),
-    foreign key(user_id) references future_book_users(id),
-    foreign key(friend_id) references future_book_users(id)
+CREATE TABLE future_book_friends (
+    user_id VARCHAR(255),
+    friend_id VARCHAR(255),
+    PRIMARY KEY (user_id , friend_id),
+    FOREIGN KEY (user_id) REFERENCES future_book_users (id),
+    FOREIGN KEY (friend_id) REFERENCES future_book_users (id)
 );
 ```
 ```SQL
-create table future_book_posts (
-    id varchar(255) primary key,
-    author_id varchar(255),
-    description varchar(255),
-    creation_date datetime,
-    type varchar(255),
-    img varchar(255)
+CREATE TABLE future_book_posts (
+    id VARCHAR(255) PRIMARY KEY,
+    author_id VARCHAR(255),
+    description VARCHAR(255),
+    creation_date DATETIME,
+    type VARCHAR(255),
+    img VARCHAR(255),
+    FOREIGN KEY (author_id) REFERENCES future_book_users (id)
 );
 ```
 
