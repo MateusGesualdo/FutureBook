@@ -38,9 +38,9 @@ CREATE TABLE future_book_posts (
 | POST | /users/login | not required | `email`, `password` | `message`, `token?`, `user_public_info?` |
 | PUT | /users/friends/:friendId | `auth` | not required | `message` |
 | DELETE | /users/friends/:friendId | `auth` | not required | `message` |
-| POST | /posts | `auth` | `type`, `description`, `img` | `message` |
-| GET | /posts/feed |
-| GET | /posts/feed/:type |
+| POST | /posts | `auth` | `type`, `description`, `image` | `message` |
+| GET | /posts/feed | `auth` | not required | `feed` |
+| GET | /posts/feed/:type | `auth` | not required | `feed` |
 | PUT | /posts/likes/:postId |
 | DELETE | /posts/likes/:postId |
 | POST | /posts/comments/:postId |
