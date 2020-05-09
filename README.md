@@ -29,6 +29,15 @@ CREATE TABLE future_book_posts (
     FOREIGN KEY (author_id) REFERENCES future_book_users (id)
 );
 ```
+```SQL
+CREATE TABLE future_book_likes (
+    friend_id VARCHAR(255),
+    post_id VARCHAR(255),
+    PRIMARY KEY (friend_id , post_id),
+    FOREIGN KEY (friend_id) REFERENCES future_book_users (id),
+    FOREIGN KEY (post_id) REFERENCES future_book_posts (id)
+);
+```
 
 ## Endpoints
 
