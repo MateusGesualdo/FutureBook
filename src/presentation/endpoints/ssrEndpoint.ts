@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { endpoints } from '../../../business/entities/endpoint'
+import { endpoints } from '../../business/entities/endpoint'
 
 const style = `
     <style>        
@@ -58,10 +58,11 @@ export default async function ssrEndpoint(req: Request, res: Response) {
                 ${style}   
                 <div>      
                     <h2>Request</h2>       
-                    <textarea id="req">${JSON.stringify(endpoints[0].req, null,3)}</textarea>
+                    <textarea id="req"></textarea>
                 </div>
                 <div id="selectContainer">                
                     <select>
+                        <option value='{}'>Endpoints</option>
                         ${endpoints.map(endpoint => (`
                             <option value=${JSON.stringify(endpoint.req)}>
                                 ${endpoint.name}

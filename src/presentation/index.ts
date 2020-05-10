@@ -9,7 +9,7 @@ import getFeedByTypeEndpoint from "./endpoints/posts/getFeedByTypeEndpoint";
 import addLikeEndpoint from "./endpoints/posts/addLikeEndpoint";
 import removeLikeEndpoint from "./endpoints/posts/removeLikeEndpoint";
 import addCommentEndpoint from "./endpoints/posts/addCommentEndpoint";
-import ssrEndpoint from "./endpoints/posts/ssrEndpoint";
+import ssrEndpoint from "./endpoints/ssrEndpoint";
 
 const app = express()
 const cors = require("cors");
