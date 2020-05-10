@@ -13,9 +13,13 @@ export default async function getFeedByTypeEndpoint(
             req.params.type
         )
 
-        res.status(200).send(result)
+        res
+            .status(200)
+            .send(result)
     } catch (err) {
-        res.status(500).send(err.message)
+        res
+            .status(500)
+            .send({message:err.message})
     }
 
 }

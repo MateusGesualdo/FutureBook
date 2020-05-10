@@ -20,7 +20,7 @@ export default class PostDB extends MainDB {
         }
     }
 
-    async getFeed(id: string, pageNumber: number = 0) {
+    async getFeed(id: string) {
         try {
             const query = await this.connection.raw(
                 `SELECT future_book_posts.*, name as author_name
@@ -28,8 +28,7 @@ export default class PostDB extends MainDB {
                 JOIN future_book_posts ON friend_id = author_id
                 JOIN future_book_users ON author_id = future_book_users.id
                 WHERE user_id = "${id}"
-                ORDER BY creation_date
-                LIMIT 10 OFFSET ${pageNumber};`
+                ORDER BY creation_date;`
             )
 
             return query[0]
@@ -38,7 +37,7 @@ export default class PostDB extends MainDB {
         }
     }
 
-    async getFeedByType(id: string, pageNumber: number = 0, type: PostType) {
+    async getFeedByType(id: string, type: PostType) {
         try {
             const query = await this.connection.raw(
                 `SELECT future_book_posts.*, name as author_name
@@ -47,8 +46,7 @@ export default class PostDB extends MainDB {
                 JOIN future_book_users ON author_id = future_book_users.id
                 WHERE user_id = "${id}"
                 AND type = "${type}"
-                ORDER BY creation_date
-                LIMIT 10 OFFSET ${pageNumber};`
+                ORDER BY creation_date;`
             )
 
             return query[0]
@@ -66,7 +64,13 @@ export default class PostDB extends MainDB {
                 )`
             )
         } catch (err) {
-            throw new Error(err.sqlMessage)
+            if (err.sqlMessage.includes("Duplicate entry")) {
+                throw new Error("Post já curtido pelo usuário")
+            } else if (err.sqlMessage.includes("constraint fails")) {
+                throw new Error("id do post inválido")
+            } else {
+                throw new Error(`Erro inesperado no banco de dados: ${err.sqlMessage}`)
+            }
         }
     }
 

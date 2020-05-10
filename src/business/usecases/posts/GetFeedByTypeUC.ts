@@ -10,27 +10,35 @@ export default class GetFeedUC {
 
     async execute(token: string, type: string) {
 
-        let postType
+        let postType, tokenData
 
-        if (type === "normal") {
+        if (type === "NORMAL") {
             postType = PostType.normal
-        } else if (type === "event") {
+        } else if (type === "EVENT") {
             postType = PostType.event
         } else {
-            throw new Error("Tipo de post inválido")
+            throw new Error("Erro: Tipo de post deve ser 'NORMAL' ou 'EVENT' ")
         }
 
-        const tokenData = jwt.verify(
-            token, process.env.JWT_KEY as string
-        ) as {
-            id: string
+        try {
+            tokenData = jwt.verify(
+                token, process.env.JWT_KEY as string
+            ) as {
+                id: string
+            }
+        } catch{
+            throw new Error("Falha na autenticação")
         }
+
 
         const feed = await this.database.getFeedByType(
-            tokenData.id, 0, postType
+            tokenData.id, postType
         )
 
-        return feed
+        return {
+            message: "Sucesso!",
+            feed
+        }
 
 
     }

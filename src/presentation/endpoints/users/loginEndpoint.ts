@@ -10,9 +10,13 @@ export default async function loginEndpoint(req: Request, res: Response) {
             password: req.body.password
         })
 
-        res.send(result)
+        res
+            .status(200)
+            .send(result)
 
     } catch (err) {
-        res.send(err.message)
+        res
+            .status(err.code || 400)
+            .send({ message: err.message })
     }
 }

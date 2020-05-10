@@ -22,19 +22,26 @@ export default class CreatePostUC {
 
     async execute(input: InputInterface) {
         const jwtSecretKey: string = process.env.JWT_KEY as string
-        const jwtData = jwt.verify(input.token, jwtSecretKey) as {
-            id: string,
-            email: string
+        let jwtData
+
+        try {
+            jwtData = jwt.verify(input.token, jwtSecretKey) as {
+                id: string,
+                email: string
+            }
+        } catch (err) {
+            throw new Error("Falha na autenticação")
         }
+
         const id = v4()
         const authorId = jwtData.id
         let type: PostType
-        if (input.type === "normal") {
+        if (input.type === "NORMAL") {
             type = PostType.normal
-        } else if (input.type === "event") {
+        } else if (input.type === "EVENT") {
             type = PostType.event
         } else {
-            throw new Error("Tipo de post inválido")
+            throw new Error("Erro: Tipo de post deve ser 'NORMAL' ou 'EVENT' ")
         }
         const creationTime = this.mapDateToDBDate(new Date())
 
@@ -43,7 +50,7 @@ export default class CreatePostUC {
             authorId,
             input.description,
             creationTime,
-            input.type,
+            type,
             input.image
         ))
 
@@ -52,7 +59,7 @@ export default class CreatePostUC {
 
 interface InputInterface {
     token: string
-    description: string  
+    description: string
     type: PostType
     image: string
 }

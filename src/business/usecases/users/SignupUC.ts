@@ -22,13 +22,14 @@ export default class SignupUC {
         const id = v4()
         const rounds = 10
         const hashPassword = await bcrypt.hash(input.password, rounds)
-
-        await this.database.signup(new User(
+        const newUser = new User(
             id,
             input.email,
             hashPassword,
             input.name
-        ))
+        )
+
+        await this.database.signup(newUser)
 
         const jwtSecretKey = process.env.JWT_KEY as string
         const token = jwt.sign(
@@ -38,7 +39,12 @@ export default class SignupUC {
         )
         return {
             message: "Usuário criado.",
-            token
+            token,
+            user_public_info: {
+                id:newUser.getId(),
+                name: newUser.getName(),
+                email: newUser.getEmail()
+            }
         }
     }
 }

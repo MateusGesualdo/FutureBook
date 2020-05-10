@@ -9,9 +9,13 @@ import getFeedByTypeEndpoint from "./endpoints/posts/getFeedByTypeEndpoint";
 import addLikeEndpoint from "./endpoints/posts/addLikeEndpoint";
 import removeLikeEndpoint from "./endpoints/posts/removeLikeEndpoint";
 import addCommentEndpoint from "./endpoints/posts/addCommentEndpoint";
+import ssrEndpoint from "./endpoints/posts/ssrEndpoint";
 
-const app = express();
+const app = express()
+const cors = require("cors");
+
 app.use(express.json());
+app.use(cors())
 
 app.post('/users/signup', signupEndpoint)
 app.post('/users/login', loginEndpoint)
@@ -25,5 +29,6 @@ app.put('/posts/likes/:postId', addLikeEndpoint)
 app.delete('/posts/likes/:postId', removeLikeEndpoint)
 app.post('/posts/comments/:postId', addCommentEndpoint)
 
+app.get('/', ssrEndpoint)
 
 export default app;

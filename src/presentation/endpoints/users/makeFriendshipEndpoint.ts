@@ -13,8 +13,13 @@ export default async function makeFriendshipEndpoint(req: Request, res: Response
             req.params.friendId
         )
 
-        res.status(200).send("Sucesso!")
+        res
+            .status(200)
+            .send({ message: "Sucesso!" })
+
     } catch (err) {
-        res.send(err.message)
+        res
+            .status(err.code || 400)
+            .send({ message: err.message })
     }
 }
