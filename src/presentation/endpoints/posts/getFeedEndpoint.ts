@@ -12,9 +12,13 @@ export default async function getFeedEndpoint(
             req.headers.auth as string
         )
 
-        res.status(200).send(result)
+        res
+            .status(200)
+            .send(result)
     } catch (err) {
-        res.status(500).send(err.message)
+        res
+            .status(500)
+            .send({ message: err.message })
     }
 
 }

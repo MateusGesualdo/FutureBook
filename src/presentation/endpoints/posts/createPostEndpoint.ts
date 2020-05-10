@@ -12,9 +12,13 @@ export default async function createPostEndpoint(req: Request, res: Response) {
             description: req.body.description,
             image: req.body.image
         })
-        res.status(200).send("Sucesso!")
+        res
+            .status(200)
+            .send({ message: "Sucesso!" })
     } catch (err) {
-        res.status(500).send(err.message)
+        res
+            .status(500)
+            .send({ message: err.message })
     }
 
 }

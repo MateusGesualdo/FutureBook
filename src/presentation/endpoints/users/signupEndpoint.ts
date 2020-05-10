@@ -3,8 +3,8 @@ import SignupUC from '../../../business/usecases/users/SignupUC'
 import UserDB from '../../../data/UserDatabase'
 
 export default async function signupEndpoint(req: Request, res: Response) {
-  
-    try {        
+
+    try {
         const database = new UserDB()
         const useCase = new SignupUC(database)
 
@@ -14,9 +14,14 @@ export default async function signupEndpoint(req: Request, res: Response) {
             password: req.body.password
         })
 
-        res.status(200).send(result)
+        res
+            .status(200)
+            .send(result)
+
     } catch (err) {
-        res.status(err.code || 500).send(err.message)
+        res
+            .status(err.code || 400)
+            .send({ message: err.message })
     }
 
 }

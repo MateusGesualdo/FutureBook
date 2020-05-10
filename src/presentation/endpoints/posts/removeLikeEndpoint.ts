@@ -6,14 +6,18 @@ export default async function removeLikeEndpoint(req: Request, res: Response) {
     try {
         const database = new PostDB()
         const usecase = new removeLikeUC(database)
-        
+
         await usecase.execute(
             req.headers.auth as string,
             req.params.postId
         )
 
-        res.status(200).send("Sucesso!")
+        res
+            .status(200)
+            .send({ message: "Sucesso!" })
     } catch (err) {
-        res.status(err.code || 400).send(err.message)
+        res
+            .status(err.code || 400)
+            .send({ message: err.message })
     }
 }

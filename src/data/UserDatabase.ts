@@ -9,14 +9,18 @@ export default class UserDB extends MainDB {
                 `INSERT INTO future_book_users 
                  VALUES(
                     "${user.getId()}",             
-                    "${user.getEmail()}", 
                     "${user.getName()}",
+                    "${user.getEmail()}",
                     "${user.getPassword()}"
                     
                 )`
             )
         } catch (err) {
-            throw new Error(err.sqlMessage)
+            if (err.sqlMessage.includes("Duplicate entry")) {
+                throw new Error("Usuário já existe")
+            } else {
+                throw new Error("Falha inesperada no banco de dados")
+            }
         }
     }
 
@@ -27,7 +31,7 @@ export default class UserDB extends MainDB {
                 FROM future_book_users 
                 WHERE email = "${email}"`
             )
-            
+
             return query[0][0]
 
         } catch {
@@ -38,19 +42,25 @@ export default class UserDB extends MainDB {
     }
 
     async makeFriendship(userId: string, friendId: string) {
-       try{
-        await this.connection.raw(
-            `INSERT INTO future_book_friends VALUES (
+        try {
+            await this.connection.raw(
+                `INSERT INTO future_book_friends VALUES (
                 "${userId}",
                 "${friendId}"
             ),(               
                 "${friendId}",
                 "${userId}"
             )`
-        )
-       }catch(err){
-           throw new Error(err.sqlMessage)
-       }
+            )
+        } catch (err) {
+            if (err.sqlMessage.includes("Duplicate entry")) {
+                throw new Error("Amizade já existe")
+            } else if (err.sqlMessage.includes("constraint fails")) {
+                throw new Error("id de usuário inválida")
+            } else {
+                throw new Error(`Falha inesperada no banco de dados: ${err.sqlMessage}`)
+            }
+        }
     }
 
     async undoFriendship(userId: string, friendId: string) {

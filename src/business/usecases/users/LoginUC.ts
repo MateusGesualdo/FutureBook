@@ -13,7 +13,7 @@ export default class LoginUC {
 
     async execute(input: LoginInput) {
 
-        if(!input.email || !input.password){
+        if (!input.email || !input.password) {
             throw new Error(
                 "Dados insuficientes"
             )
@@ -21,11 +21,11 @@ export default class LoginUC {
 
         const user = await this.database.getUserByEmail(input.email)
 
-        if(!user) throw new Error( "Usuário não encontrado ou senha incorreta.")
-        
+        if (!user) throw new Error("Usuário não encontrado ou senha incorreta.")
+
         const isPasswordCorrect = await bcrypt.compare(input.password, user.password)
         const jwtSecretKey = process.env.JWT_KEY as string
-       
+
         if (isPasswordCorrect) {
             const token = jwt.sign(
                 { id: user.id },
@@ -34,7 +34,12 @@ export default class LoginUC {
             )
             return {
                 message: "Usuário logado.",
-                token
+                token,
+                user_public_info: {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email
+                }
             }
         } else {
             throw new Error(
