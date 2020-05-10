@@ -1,5 +1,7 @@
 # FutureBook
 
+![](screenshot.png)
+
 ## SQL Database Setup
 ```SQL
 CREATE TABLE future_book_users (
@@ -39,17 +41,6 @@ CREATE TABLE future_book_likes (
 );
 ```
 
-## Endpoints
 
-| Method | Path | Headers | Body | Response | 
-| ------ | ---- | ------- | ---- | -------- |
-| POST | /users/signup | not required | `name`, `email`, `password` | `message`, `token?`, `user_public_info?` |
-| POST | /users/login | not required | `email`, `password` | `message`, `token?`, `user_public_info?` |
-| PUT | /users/friends/:friendId | `auth` | not required | `message` |
-| DELETE | /users/friends/:friendId | `auth` | not required | `message` |
-| POST | /posts | `auth` | `type`, `description`, `image` | `message` |
-| GET | /posts/feed | `auth` | not required | `message`, `feed` |
-| GET | /posts/feed/:type | `auth` | not required | `message`, `feed` |
-| PUT | /posts/likes/:postId |
-| DELETE | /posts/likes/:postId |
-| POST | /posts/comments/:postId |
+
+
