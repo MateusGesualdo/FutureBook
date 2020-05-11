@@ -22,7 +22,7 @@
 * `start .env`
 1. Paste the following environment variables you **.env** file, replacing their values for those of your own database:
 
-```.env
+```
 DB_HOST = myhost.com
 DB_USER = me
 DB_PASSWORD = xxxxxxxxxxxxxxxxxxxx
