@@ -72,7 +72,7 @@
    );
    ```
 1. Run `npm run start` on your CLI
-1. Open your browser's *localhost* and test de endpoints using the project's own GUI. Alternatively, you can use other softwares such as Postman.
+1. Open your browser's *localhost* and test the endpoints using this project's own GUI. Alternatively, you can use other softwares such as Postman.
 
 
 
