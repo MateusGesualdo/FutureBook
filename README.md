@@ -20,9 +20,9 @@
     * `npm install` 
     * `touch .env`
     * `start .env`
-1. Paste the following environment variables you **.env** file, replacing their values for those of your own database:
+1. Paste the following environment variables into your **.env** file, replacing their values for those of your own SQL database:
 
-```
+   ```
 DB_HOST = myhost.com
 DB_USER = me
 DB_PASSWORD = xxxxxxxxxxxxxxxxxxxx
@@ -31,9 +31,9 @@ DB_NAME = mytable
 JWT_KEY = xxxxxxxxxxxx
 ```
 
-## SQL Database Setup
+1. Run the following queries on your SQL database:
 
-```SQL
+   ```SQL
 CREATE TABLE future_book_users (
     id VARCHAR(255) PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL,
