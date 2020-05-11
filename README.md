@@ -22,7 +22,7 @@
     * `start .env`
 1. Paste the following environment variables into your **.env** file, replacing their values for those of your own SQL database:
 
-   ```
+```
 DB_HOST = myhost.com
 DB_USER = me
 DB_PASSWORD = xxxxxxxxxxxxxxxxxxxx
@@ -33,7 +33,7 @@ JWT_KEY = xxxxxxxxxxxx
 
 1. Run the following queries on your SQL database:
 
-   ```SQL
+```SQL
 CREATE TABLE future_book_users (
     id VARCHAR(255) PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL,
@@ -70,7 +70,8 @@ CREATE TABLE future_book_likes (
     FOREIGN KEY (post_id) REFERENCES future_book_posts (id)
 );
 ```
-
+1. Run `npm run start` on your CLI
+1. Open localhost:3000 on your browser
 
 
 
