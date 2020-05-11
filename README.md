@@ -22,17 +22,18 @@
     * `start .env`
 1. Paste the following environment variables into your **.env** file, replacing their values for those of your own SQL database:
 
-```
-DB_HOST = myhost.com
-DB_USER = me
-DB_PASSWORD = xxxxxxxxxxxxxxxxxxxx
-DB_NAME = mytable
+   * 
+   ```DB_HOST = myhost.com
+      DB_USER = me
+      DB_PASSWORD = xxxxxxxxxxxxxxxxxxxx
+      DB_NAME = mytable      
+      JWT_KEY = xxxxxxxxxxxx
+   ```
 
-JWT_KEY = xxxxxxxxxxxx
-```
+
 
 1. Run the following queries on your SQL database:
-
+   *
 ```SQL
 CREATE TABLE future_book_users (
     id VARCHAR(255) PRIMARY KEY,
@@ -41,6 +42,7 @@ CREATE TABLE future_book_users (
     password VARCHAR(255) UNIQUE
 );
 ```
+   *
 ```SQL
 CREATE TABLE future_book_friends (
     user_id VARCHAR(255),
@@ -50,6 +52,7 @@ CREATE TABLE future_book_friends (
     FOREIGN KEY (friend_id) REFERENCES future_book_users (id)
 );
 ```
+   *
 ```SQL
 CREATE TABLE future_book_posts (
     id VARCHAR(255) PRIMARY KEY,
@@ -61,6 +64,7 @@ CREATE TABLE future_book_posts (
     FOREIGN KEY (author_id) REFERENCES future_book_users (id)
 );
 ```
+   *
 ```SQL
 CREATE TABLE future_book_likes (
     friend_id VARCHAR(255),
