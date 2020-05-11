@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import PostDB from "../../../data/postDatabase";
-import removeLikeUC from "../../../business/usecases/posts/removeLikeUC";
+import RemoveLikeUC from "../../../business/usecases/posts/removeLikeUC";
 
 export default async function removeLikeEndpoint(req: Request, res: Response) {
     try {
         const database = new PostDB()
-        const usecase = new removeLikeUC(database)
+        const usecase = new RemoveLikeUC(database)
 
         await usecase.execute(
             req.headers.auth as string,
