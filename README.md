@@ -17,9 +17,9 @@
 
 1. Clone this repository into your machine
 1. Open your preferred CLI inside the cloned repo and run the following commands:
-* `npm install` 
-* `touch .env`
-* `start .env`
+    * `npm install` 
+    * `touch .env`
+    * `start .env`
 1. Paste the following environment variables you **.env** file, replacing their values for those of your own database:
 
 ```
