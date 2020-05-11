@@ -71,8 +71,19 @@
        FOREIGN KEY (post_id) REFERENCES future_book_posts (id)
    );
    ```
+   
+   ```SQL
+   CREATE TABLE future_book_comments (
+       id VARCHAR(255) PRIMARY KEY,
+       friend_id VARCHAR(255),
+       post_id VARCHAR(255),
+       comment_text VARCHAR(255),
+       FOREIGN KEY (friend_id) REFERENCES future_book_users (id),
+       FOREIGN KEY (post_id) REFERENCES future_book_posts (id)
+   );
+   ```
 1. Run `npm run start` on your CLI
-1. Open your browser's *localhost* and test the endpoints using this project's own GUI. Alternatively, you can use other softwares such as Postman.
+1. Open your browser's *localhost* and test the endpoints using this project's own GUI. You'll find templates for all available requests, but feel free to send them via other softwares such as Postman.
 
 
 
