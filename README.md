@@ -1,6 +1,6 @@
 # FutureBook
 
-![](screenshot.png)
+
 
 ## SQL Database Setup
 ```SQL
