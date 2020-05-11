@@ -1,22 +1,13 @@
 class Endpoint {
-    public req: any = {}
-
     constructor(
         public name: string,
-        path: string,
-        method: string,
-        headers: any,
-        body?: any
+        public path: string,
+        public method: string,
+        public headers: any,
+        public body?: any
     ) {
-        this.req = {
-            path: "http://localhost:3000" + path,
-            config: {
-                method,
-                headers,
-                body
-            }
-        }
-        this.req.config.headers["Content-Type"] = "application/json"
+        this.path = "http://localhost:3000" + path
+        this.headers["Content-Type"] = "application/json"
     }
 }
 
@@ -27,9 +18,9 @@ export const endpoints = [
         "POST",
         {},
         {
-            "name": "", 
-            "email": "", 
-            "password": ""
+            name: "",
+            email: "",
+            password: ""
         }),
     new Endpoint(
         "Login",
@@ -37,7 +28,7 @@ export const endpoints = [
         "POST",
         {},
         {
-            "email": "", 
+            "email": "",
             "password": ""
         }),
     new Endpoint(
@@ -57,10 +48,10 @@ export const endpoints = [
         "/posts",
         "POST",
         { "auth": "" },
-        { 
-            "description": "", 
-            "type": "NORMAL", 
-            "image": "" 
+        {
+            "description": "",
+            "type": "NORMAL",
+            "image": ""
         }
     ),
     new Endpoint(
@@ -83,7 +74,7 @@ export const endpoints = [
     ),
     new Endpoint(
         "Remove Like",
-        "//posts/likes/:postId",
+        "/posts/likes/:postId",
         "DELETE",
         { "auth": "" }
     ),
