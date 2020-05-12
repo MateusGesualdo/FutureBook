@@ -25,7 +25,7 @@
    ```DB_HOST = myhost.com
       DB_USER = me
       DB_PASSWORD = xxxxxxxxxxxxxxxxxxxx
-      DB_NAME = mytable      
+      DB_NAME = myschema     
       JWT_KEY = xxxxxxxxxxxx
    ```
 
